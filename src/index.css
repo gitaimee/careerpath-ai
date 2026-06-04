@@ -474,10 +474,10 @@ body {
 }
 
 /* ================================================
-   TES PAGE — tambahkan di bagian bawah index.css
+   TES PAGE â€” tambahkan di bagian bawah index.css
    ================================================ */
 
-/* ── Main wrapper ── */
+/* â”€â”€ Main wrapper â”€â”€ */
 .cp-tes-main {
   flex: 1;
   display: flex;
@@ -487,7 +487,7 @@ body {
   padding: 48px 24px 60px;
 }
 
-/* ── Hero section ── */
+/* â”€â”€ Hero section â”€â”€ */
 .cp-tes-hero {
   background: rgba(192, 224, 255, 0.6);
   border-radius: 48px;
@@ -533,7 +533,7 @@ body {
   align-self: flex-start;
 }
 
-/* ── Carrie floating ── */
+/* â”€â”€ Carrie floating â”€â”€ */
 .cp-tes-carrie {
   flex-shrink: 0;
   width: clamp(160px, 22vw, 280px);
@@ -553,7 +553,7 @@ body {
   50%       { transform: translateY(-20px); }
 }
 
-/* ── Cara Kerja section ── */
+/* â”€â”€ Cara Kerja section â”€â”€ */
 .cp-tes-how {
   background: #ffffff;
   border-radius: 48px;
@@ -632,10 +632,10 @@ body {
 }
 
 /* ================================================
-   TEST QUESTIONS PAGE — tambahkan di bawah index.css
+   TEST QUESTIONS PAGE â€” tambahkan di bawah index.css
    ================================================ */
 
-/* ── Main wrapper ── */
+/* â”€â”€ Main wrapper â”€â”€ */
 .cp-tq-main {
   flex: 1;
   display: flex;
@@ -645,7 +645,7 @@ body {
   padding: 40px 24px 60px;
 }
 
-/* ── Progress bar ── */
+/* â”€â”€ Progress bar â”€â”€ */
 .cp-tq-progress-wrapper {
   width: 100%;
   max-width: 1280px;
@@ -678,7 +678,7 @@ body {
   white-space: nowrap;
 }
 
-/* ── Card wrapper (clips slide animation) ── */
+/* â”€â”€ Card wrapper (clips slide animation) â”€â”€ */
 .cp-tq-card-wrapper {
   width: 100%;
   max-width: 1280px;
@@ -686,7 +686,7 @@ body {
   border-radius: 48px;
 }
 
-/* ── Question card ── */
+/* â”€â”€ Question card â”€â”€ */
 .cp-tq-card {
   background: #ffffff;
   border-radius: 48px;
@@ -724,7 +724,7 @@ body {
 .cp-tq-slide-out-right { animation: cpTqSlideOutRight 0.28s cubic-bezier(0.4, 0, 0.2, 1) both; }
 .cp-tq-slide-in        { animation: cpTqSlideIn       0.28s cubic-bezier(0.4, 0, 0.2, 1) both; }
 
-/* ── Heading & question text ── */
+/* â”€â”€ Heading & question text â”€â”€ */
 .cp-tq-heading {
   font-weight: 700;
   font-size: clamp(24px, 3.5vw, 40px);
@@ -744,7 +744,7 @@ body {
   margin: 0;
 }
 
-/* ── Answer options ── */
+/* â”€â”€ Answer options â”€â”€ */
 .cp-tq-answers {
   display: flex;
   flex-direction: column;
@@ -789,7 +789,7 @@ body {
   background: rgba(136, 162, 255, 0.3);
 }
 
-/* ── Nav buttons row ── */
+/* â”€â”€ Nav buttons row â”€â”€ */
 .cp-tq-nav {
   display: flex;
   align-items: center;
@@ -859,7 +859,7 @@ body {
   line-height: 1;
 }
 
-/* ── Dots ── */
+/* â”€â”€ Dots â”€â”€ */
 .cp-tq-dots {
   display: flex;
   align-items: center;
@@ -916,7 +916,7 @@ body {
   z-index: 0;
 }
 
-/* ── Main wrapper ── */
+/* â”€â”€ Main wrapper â”€â”€ */
 .cp-eksplor-main {
   position: relative;
   z-index: 1;
@@ -927,7 +927,7 @@ body {
   padding: 60px 24px 80px;
 }
 
-/* ── Hero text ── */
+/* â”€â”€ Hero text â”€â”€ */
 .cp-eksplor-hero {
   display: flex;
   flex-direction: column;
@@ -956,7 +956,7 @@ body {
   margin: 0;
 }
 
-/* ── Grid ── */
+/* â”€â”€ Grid â”€â”€ */
 .cp-eksplor-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -965,7 +965,7 @@ body {
   max-width: 1160px;
 }
 
-/* ── Card overrides for grid (bigger than scroll version) ── */
+/* â”€â”€ Card overrides for grid (bigger than scroll version) â”€â”€ */
 .cp-eksplor-card {
   width: 100% !important;
   height: auto !important;
@@ -992,9 +992,9 @@ body {
 }
 
 
-/* ─────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Detail page  (tambahkan ke index.css)
-   ───────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .cp-detail-page {
   position: relative;
@@ -1014,7 +1014,7 @@ body {
   z-index: 0;
 }
 
-/* ── Main wrapper ── */
+/* â”€â”€ Main wrapper â”€â”€ */
 .cp-detail-main {
   position: relative;
   z-index: 1;
@@ -1028,7 +1028,7 @@ body {
   align-self: stretch;
 }
 
-/* ── Back link ── */
+/* â”€â”€ Back link â”€â”€ */
 .cp-detail-back {
   font-family: "Overpass Mono", monospace;
   font-size: clamp(14px, 1.5vw, 18px);
@@ -1043,7 +1043,7 @@ body {
   color: #88a2ff;
 }
 
-/* ── Hero: two-column layout ── */
+/* â”€â”€ Hero: two-column layout â”€â”€ */
 .cp-detail-hero {
   display: flex;
   align-items: center;
@@ -1052,7 +1052,7 @@ body {
   animation: cpFadeUp 0.6s ease both;
 }
 
-/* ── Left: text info ── */
+/* â”€â”€ Left: text info â”€â”€ */
 .cp-detail-info {
   display: flex;
   flex-direction: column;
@@ -1085,7 +1085,7 @@ body {
   margin: 0;
 }
 
-/* ── Label + tags row ── */
+/* â”€â”€ Label + tags row â”€â”€ */
 .cp-detail-row {
   display: flex;
   flex-direction: column;
@@ -1136,7 +1136,7 @@ body {
   margin: 0;
 }
 
-/* ── Right: illustration ── */
+/* â”€â”€ Right: illustration â”€â”€ */
 .cp-detail-img-wrap {
   flex-shrink: 0;
   width: clamp(200px, 30vw, 420px);
@@ -1152,7 +1152,7 @@ body {
   animation: cpFloat 5s ease-in-out infinite;
 }
 
-/* ── Not-found state ── */
+/* â”€â”€ Not-found state â”€â”€ */
 .cp-detail-not-found {
   flex: 1;
   display: flex;
@@ -1164,7 +1164,7 @@ body {
   color: rgba(26, 35, 66, 0.6);
 }
 
-/* ── Eksplor card: clickable link ── */
+/* â”€â”€ Eksplor card: clickable link â”€â”€ */
 .cp-eksplor-card-link {
   text-decoration: none;
   color: inherit;
@@ -1465,7 +1465,7 @@ body {
   }
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
   .cp-detail-hero {
     flex-direction: column-reverse;
@@ -1489,7 +1489,7 @@ body {
   }
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 900px) {
   .cp-eksplor-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1512,7 +1512,7 @@ body {
   }
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
   .cp-tq-inner {
     padding: 28px 24px 36px;
@@ -1556,7 +1556,7 @@ body {
   }
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
   .cp-tes-hero {
     flex-direction: column;
@@ -1637,76 +1637,74 @@ body {
   }
 }
 
- / *   R e s p o n s i v e   L a y o u t   F i x e s   &   H a m b u r g e r   M e n u   * / 
- . c p - h a m b u r g e r   { 
-     d i s p l a y :   n o n e ; 
-     b a c k g r o u n d :   t r a n s p a r e n t ; 
-     b o r d e r :   n o n e ; 
-     c u r s o r :   p o i n t e r ; 
-     f l e x - d i r e c t i o n :   c o l u m n ; 
-     g a p :   5 p x ; 
-     p a d d i n g :   5 p x ; 
- } 
- . c p - h a m b u r g e r   s p a n   { 
-     w i d t h :   2 5 p x ; 
-     h e i g h t :   3 p x ; 
-     b a c k g r o u n d :   # 1 a 2 3 4 2 ; 
-     t r a n s i t i o n :   0 . 3 s ; 
-     b o r d e r - r a d i u s :   3 p x ; 
- } 
- @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   { 
-     . c p - h a m b u r g e r   {   d i s p l a y :   f l e x ;   } 
-     . c p - n a v - l i n k s   { 
-         p o s i t i o n :   a b s o l u t e ; 
-         t o p :   7 1 p x ; 
-         l e f t :   0 ; 
-         w i d t h :   1 0 0 % ; 
-         b a c k g r o u n d :   # e 3 f c 8 7 ; 
-         f l e x - d i r e c t i o n :   c o l u m n ; 
-         p a d d i n g :   1 0 p x   0   2 0 p x   0 ; 
-         b o x - s h a d o w :   0   4 p x   6 p x   r g b a ( 0 , 0 , 0 , 0 . 1 ) ; 
-         o p a c i t y :   0 ; 
-         p o i n t e r - e v e n t s :   n o n e ; 
-         t r a n s i t i o n :   o p a c i t y   0 . 3 s   e a s e - i n - o u t ; 
-         z - i n d e x :   9 0 ; 
-         a l i g n - i t e m s :   c e n t e r ; 
-     } 
-     . c p - n a v - l i n k s . o p e n   { 
-         o p a c i t y :   1 ; 
-         p o i n t e r - e v e n t s :   a u t o ; 
-     } 
- } 
- 
- / *   L a r g e   s c r e e n   s c a l i n g   f i x e s   * / 
- . c p - e k s p l o r - g r i d   { 
-     d i s p l a y :   g r i d ; 
-     g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( a u t o - f i t ,   m i n m a x ( 2 8 0 p x ,   1 f r ) ) ; 
-     g a p :   2 4 p x ; 
-     w i d t h :   1 0 0 % ; 
-     m a x - w i d t h :   1 2 0 0 p x ; 
-     m a r g i n :   0   a u t o ; 
-     j u s t i f y - i t e m s :   c e n t e r ; 
- } 
- . c p - e k s p l o r - m a i n   { 
-     w i d t h :   1 0 0 % ; 
-     m a x - w i d t h :   1 4 4 0 p x ; 
-     m a r g i n :   0   a u t o ; 
-     p a d d i n g :   0   2 4 p x ; 
- } 
- . c p - h e r o ,   . c p - s e c t i o n 1 ,   . c p - s e c t i o n 2 ,   . c p - s e c t i o n 3 ,   . c p - t e s - m a i n ,   . c p - t q - m a i n   { 
-     w i d t h :   1 0 0 % ; 
-     m a x - w i d t h :   1 4 4 0 p x ; 
-     m a r g i n :   0   a u t o ; 
- } 
- . c p - t e s - h o w - c a r d s   { 
-     d i s p l a y :   g r i d ; 
-     g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( a u t o - f i t ,   m i n m a x ( 3 0 0 p x ,   1 f r ) ) ; 
-     g a p :   2 0 p x ; 
-     w i d t h :   1 0 0 % ; 
- } 
- . c p - n a v b a r   { 
-     m a x - w i d t h :   1 0 0 % ; 
-     m a r g i n :   0   a u t o ; 
- } 
-  
- 
+/* Responsive Layout Fixes & Hamburger Menu */
+.cp-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+.cp-hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #1a2342;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+@media (max-width: 768px) {
+  .cp-hamburger { display: flex; }
+  .cp-nav-links {
+    position: absolute;
+    top: 71px;
+    left: 0;
+    width: 100%;
+    background: #e3fc87;
+    flex-direction: column;
+    padding: 10px 0 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 90;
+    align-items: center;
+  }
+  .cp-nav-links.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Large screen scaling fixes */
+.cp-eksplor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+}
+.cp-eksplor-main {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.cp-hero, .cp-section1, .cp-section2, .cp-section3, .cp-tes-main, .cp-tq-main {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.cp-tes-how-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+.cp-navbar {
+  max-width: 100%;
+  margin: 0 auto;
+}
