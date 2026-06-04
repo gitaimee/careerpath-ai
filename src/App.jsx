@@ -6,6 +6,8 @@ import TesQuestions from "./pages/TesQuestions";
 import Profil from "./pages/Profil";
 import Detail from "./pages/Detail";
 import Hasil from "./pages/Hasil";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function HasilPage() {
   const { state } = useLocation();
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/tes/questions"  element={<TesQuestions />} />
         <Route path="/hasil"          element={<HasilPage />} />
         <Route path="/profil"         element={<Profil />} />
+        <Route path="/login"          element={<Login />} />
+        <Route path="/register"       element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

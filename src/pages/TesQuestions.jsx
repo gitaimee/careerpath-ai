@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 import { testQuestions } from "../data/testQuestions";
 import { jobCards } from "../data/jobCards";
@@ -52,10 +53,11 @@ export default function TesQuestions() {
     }
     
     try {
+      // Get current user session
+      const { data: { session } } = await supabase.auth.getSession();
+      
       const response = await axios.post("http://localhost:3000/api/assessments", {
-        // Hardcode a user ID for now since auth might not be fully wired up in frontend yet
-        // In real app, get this from Supabase Auth context
-        user_id: "00000000-0000-0000-0000-000000000000", 
+        user_id: session?.user?.id || "00000000-0000-0000-0000-000000000000", 
         answers: answers,
         time_commitment_hours: 20
       });

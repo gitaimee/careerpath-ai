@@ -1,9 +1,33 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import logoImg from "../assets/logo.png";
 
 const navClass = ({ isActive }) => (isActive ? "active" : undefined);
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
   return (
     <nav className="cp-navbar">
       <Link to="/" className="cp-logo">
@@ -17,9 +41,21 @@ export default function Navbar() {
         <NavLink to="/tes" className={navClass}>
           tes
         </NavLink>
-        <NavLink to="/profil" className={navClass}>
-          profil
-        </NavLink>
+        
+        {session ? (
+          <>
+            <NavLink to="/profil" className={navClass}>
+              profil
+            </NavLink>
+            <button onClick={handleLogout} className="text-red-500 hover:text-red-700 font-medium">
+              logout
+            </button>
+          </>
+        ) : (
+          <NavLink to="/login" className={navClass}>
+            masuk
+          </NavLink>
+        )}
       </div>
     </nav>
   );
