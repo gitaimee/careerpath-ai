@@ -15,6 +15,7 @@ export default function TesQuestions() {
   const [direction, setDirection] = useState(null);
   const [animating, setAnimating] = useState(false);
   const [btnPressed, setBtnPressed] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const total = testQuestions.length;
   const q = testQuestions[current];
@@ -43,7 +44,8 @@ export default function TesQuestions() {
 
   // ── DUMMY: hapus blok ini dan ganti dengan API call beneran ──────────────
   const handleSubmit = async () => {
-    if (!hasAnswer) return;
+    if (!hasAnswer || isSubmitting) return;
+    setIsSubmitting(true);
     
     // Map selected object to an array of 10 integers (1-5 scale)
     const answers = [];
@@ -86,6 +88,8 @@ export default function TesQuestions() {
       // Fallback if backend fails
       const randomJob = jobCards[Math.floor(Math.random() * jobCards.length)];
       navigate("/hasil", { state: { result: randomJob.slug } });
+    } finally {
+      setIsSubmitting(false);
     }
   };
   // ── END DUMMY ─────────────────────────────────────────────────────────────
@@ -162,12 +166,12 @@ export default function TesQuestions() {
 
           <button
             type="button"
-            className={`cp-tq-nav-btn${!hasAnswer ? " cp-tq-nav-btn-disabled" : ""}${btnPressed === "next" ? " cp-tq-nav-btn-pressed" : ""}${isLast ? " cp-tq-nav-btn-submit" : ""}`}
+            className={`cp-tq-nav-btn${(!hasAnswer || isSubmitting) ? " cp-tq-nav-btn-disabled" : ""}${btnPressed === "next" ? " cp-tq-nav-btn-pressed" : ""}${isLast ? " cp-tq-nav-btn-submit" : ""}`}
             onClick={isLast ? handleSubmit : handleNext}
-            disabled={!hasAnswer}
+            disabled={!hasAnswer || isSubmitting}
             aria-label={isLast ? "Lihat hasil" : "Pertanyaan selanjutnya"}
           >
-            {isLast ? "lihat hasil" : "selanjutnya"}
+            {isLast ? (isSubmitting ? "sedang memproses..." : "lihat hasil") : "selanjutnya"}
             {!isLast && <span className="cp-tq-nav-arrow">→</span>}
           </button>
         </div>
