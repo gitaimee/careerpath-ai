@@ -35,23 +35,23 @@ export default function Login() {
   return (
     <div className="cp-root">
       <Navbar />
-      <main className="cp-page-main flex flex-col items-center justify-center py-20">
-        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full border border-slate-100">
-          <h1 className="text-3xl font-bold text-center mb-6 text-slate-800">Masuk</h1>
+      <main className="auth-container">
+        <div className="auth-card">
+          <h1 className="auth-title">Masuk</h1>
           
           {error && (
-            <div className="bg-red-50 text-red-500 p-3 rounded-lg mb-4 text-sm">
+            <div className="auth-error">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleLogin} className="auth-form">
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">Email</label>
+              <label className="auth-label">Email</label>
               <input 
                 type="email" 
                 required
-                className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#c8ff6b] focus:border-[#c8ff6b] outline-none transition"
+                className="auth-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
@@ -59,11 +59,11 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">Password</label>
+              <label className="auth-label">Password</label>
               <input 
                 type="password" 
                 required
-                className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#c8ff6b] focus:border-[#c8ff6b] outline-none transition"
+                className="auth-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
@@ -73,14 +73,15 @@ export default function Login() {
             <button 
               type="submit" 
               disabled={loading}
-              className="cp-btn mt-4 flex justify-center w-full"
+              className="cp-btn"
+              style={{ width: '100%', marginTop: '1rem', justifyContent: 'center' }}
             >
               {loading ? "Memproses..." : "Masuk"}
             </button>
           </form>
 
-          <p className="text-center mt-6 text-sm text-slate-500">
-            Belum punya akun? <Link to="/register" className="text-blue-600 font-medium hover:underline">Daftar di sini</Link>
+          <p className="auth-footer">
+            Belum punya akun? <Link to="/register" className="auth-link">Daftar di sini</Link>
           </p>
         </div>
       </main>

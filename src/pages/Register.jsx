@@ -45,23 +45,23 @@ export default function Register() {
   return (
     <div className="cp-root">
       <Navbar />
-      <main className="cp-page-main flex flex-col items-center justify-center py-20">
-        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full border border-slate-100">
-          <h1 className="text-3xl font-bold text-center mb-6 text-slate-800">Buat Akun</h1>
+      <main className="auth-container">
+        <div className="auth-card">
+          <h1 className="auth-title">Buat Akun</h1>
           
           {error && (
-            <div className="bg-red-50 text-red-500 p-3 rounded-lg mb-4 text-sm">
+            <div className="auth-error">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleRegister} className="flex flex-col gap-4">
+          <form onSubmit={handleRegister} className="auth-form">
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">Nama Lengkap</label>
+              <label className="auth-label">Nama Lengkap</label>
               <input 
                 type="text" 
                 required
-                className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#c8ff6b] focus:border-[#c8ff6b] outline-none transition"
+                className="auth-input"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="John Doe"
@@ -69,11 +69,11 @@ export default function Register() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">Email</label>
+              <label className="auth-label">Email</label>
               <input 
                 type="email" 
                 required
-                className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#c8ff6b] focus:border-[#c8ff6b] outline-none transition"
+                className="auth-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
@@ -81,12 +81,12 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-600 mb-1">Password</label>
+              <label className="auth-label">Password</label>
               <input 
                 type="password" 
                 required
                 minLength={6}
-                className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#c8ff6b] focus:border-[#c8ff6b] outline-none transition"
+                className="auth-input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimal 6 karakter"
@@ -96,14 +96,15 @@ export default function Register() {
             <button 
               type="submit" 
               disabled={loading}
-              className="cp-btn mt-4 flex justify-center w-full"
+              className="cp-btn"
+              style={{ width: '100%', marginTop: '1rem', justifyContent: 'center' }}
             >
               {loading ? "Memproses..." : "Daftar"}
             </button>
           </form>
 
-          <p className="text-center mt-6 text-sm text-slate-500">
-            Sudah punya akun? <Link to="/login" className="text-blue-600 font-medium hover:underline">Masuk di sini</Link>
+          <p className="auth-footer">
+            Sudah punya akun? <Link to="/login" className="auth-link">Masuk di sini</Link>
           </p>
         </div>
       </main>

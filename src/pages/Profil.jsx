@@ -79,72 +79,69 @@ export default function Profil() {
   return (
     <div className="cp-root">
       <Navbar />
-      <main className="cp-page-main py-12 px-6 max-w-4xl mx-auto w-full">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">Profil Kamu</h1>
-          <p className="text-slate-500 mb-6">Informasi akun dan riwayat asesmen karirmu.</p>
+      <main className="profile-container">
+        <div className="profile-card">
+          <h1 className="auth-title" style={{textAlign: 'left', marginBottom: '0.5rem'}}>Profil Kamu</h1>
+          <p style={{color: '#64748b', marginBottom: '1.5rem'}}>Informasi akun dan riwayat asesmen karirmu.</p>
           
-          <div className="bg-slate-50 rounded-xl p-6 mb-8 border border-slate-100">
-            <h2 className="text-xl font-semibold text-slate-800 mb-4">Informasi Akun</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-slate-500">Nama Lengkap</p>
-                <p className="font-medium text-slate-800">{profile?.full_name || session?.user?.user_metadata?.full_name || "Pengguna"}</p>
-              </div>
-              <div>
-                <p className="text-sm text-slate-500">Email</p>
-                <p className="font-medium text-slate-800">{session?.user?.email}</p>
-              </div>
+          <div className="profile-info-grid">
+            <div>
+              <p style={{fontSize: '0.875rem', color: '#64748b'}}>Nama Lengkap</p>
+              <p style={{fontWeight: '500', color: '#1e293b'}}>{profile?.full_name || session?.user?.user_metadata?.full_name || "Pengguna"}</p>
+            </div>
+            <div>
+              <p style={{fontSize: '0.875rem', color: '#64748b'}}>Email</p>
+              <p style={{fontWeight: '500', color: '#1e293b'}}>{session?.user?.email}</p>
             </div>
           </div>
-
-          <h2 className="text-2xl font-bold text-slate-800 mb-6">Riwayat Rekomendasi</h2>
-          
-          {history.length === 0 ? (
-            <div className="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-              <p className="text-slate-500 mb-4">Kamu belum pernah melakukan tes asesmen.</p>
-              <button 
-                onClick={() => navigate("/tes")}
-                className="cp-btn"
-              >
-                Mulai Tes Sekarang
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {history.map((rec) => (
-                <div key={rec.id} className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex justify-between items-center mb-4 border-b border-slate-100 pb-4">
-                    <span className="text-sm font-medium text-slate-500">
-                      ID: {rec.id.substring(0, 8)}...
-                    </span>
-                    <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                      {new Date(rec.created_at).toLocaleDateString('id-ID', {
-                        day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
-                      })}
-                    </span>
-                  </div>
-                  
-                  <div className="grid gap-3">
-                    {rec.professions.sort((a, b) => a.rank - b.rank).map((prof, idx) => (
-                      <div key={idx} className="flex justify-between items-center bg-[#f8f9fc] p-3 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${idx === 0 ? 'bg-[#c8ff6b] text-slate-800' : 'bg-slate-200 text-slate-600'}`}>
-                            #{prof.rank}
-                          </div>
-                          <span className="font-semibold text-slate-800">{prof.career_name}</span>
-                        </div>
-                        <span className="font-pixel text-lg font-bold text-blue-600">
-                          {Math.round(prof.readiness_percentage)}% Match
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
+
+        <h2 className="auth-title" style={{textAlign: 'left'}}>Riwayat Rekomendasi</h2>
+          
+        {history.length === 0 ? (
+          <div className="profile-card" style={{textAlign: 'center', borderStyle: 'dashed'}}>
+            <p style={{color: '#64748b', marginBottom: '1rem'}}>Kamu belum pernah melakukan tes asesmen.</p>
+            <button 
+              onClick={() => navigate("/tes")}
+              className="cp-btn"
+            >
+              Mulai Tes Sekarang
+            </button>
+          </div>
+        ) : (
+          <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+            {history.map((rec) => (
+              <div key={rec.id} className="rec-history-item">
+                <div className="rec-history-header">
+                  <span style={{fontSize: '0.875rem', fontWeight: '500', color: '#64748b'}}>
+                    ID: {rec.id.substring(0, 8)}...
+                  </span>
+                  <span className="rec-history-date">
+                    {new Date(rec.created_at).toLocaleDateString('id-ID', {
+                      day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
+                    })}
+                  </span>
+                </div>
+                
+                <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
+                  {rec.professions.sort((a, b) => a.rank - b.rank).map((prof, idx) => (
+                    <div key={idx} className="rec-prof-row">
+                      <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
+                        <div className={`rec-prof-rank ${idx === 0 ? 'rank-1' : 'rank-other'}`}>
+                          #{prof.rank}
+                        </div>
+                        <span style={{fontWeight: '600', color: '#1e293b'}}>{prof.career_name}</span>
+                      </div>
+                      <span className="rec-prof-match">
+                        {Math.round(prof.readiness_percentage)}% Match
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </main>
       <footer className="cp-footer">
         <div className="cp-footer-name">careerpath.ai</div>
