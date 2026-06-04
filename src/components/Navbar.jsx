@@ -10,6 +10,25 @@ export default function Navbar() {
   const location = useLocation();
   const [session, setSession] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Smart sticky navbar on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Hide if scrolling down and past the navbar height (71px). Show if scrolling up.
+      if (currentScrollY > lastScrollY && currentScrollY > 71 && !isMenuOpen) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMenuOpen]);
 
   // Close menu when route changes
   useEffect(() => {
@@ -36,7 +55,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="cp-navbar">
+    <nav className={`cp-navbar ${isVisible ? '' : 'nav-hidden'}`.trim()}>
       <Link to="/" className="cp-logo">
         <img src={logoImg} alt="" className="cp-logo-img" />
         <span className="cp-logo-text">careerpath.ai</span>

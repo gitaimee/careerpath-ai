@@ -70,4 +70,44 @@ export const jobCards = [
     traits: ["Kreatif", "Strategis", "Data-driven", "Komunikatif"],
     companions: ["Content Creator", "UI/UX Designer", "Product Manager"],
   },
+  {
+    slug: "business-analyst",
+    name: "Business Analyst",
+    img: imgBusiness,
+    description:
+      "Business Analyst menjadi jembatan antara tim IT dan bisnis. Mereka menganalisis proses bisnis dan merumuskan solusi teknologi yang tepat.",
+    skills: ["Data Analysis", "Communication", "Problem Solving", "Agile"],
+    traits: ["Strategis", "Kritis", "Komunikatif", "Adaptif"],
+    companions: ["Data Analyst", "Project Manager", "Software Engineer"],
+  },
+  {
+    slug: "cloud-engineer",
+    name: "Cloud Engineer",
+    img: imgCloud,
+    description:
+      "Cloud Engineer bertanggung jawab merancang, membangun, dan memelihara infrastruktur teknologi di cloud agar sistem berjalan efisien.",
+    skills: ["AWS/GCP/Azure", "Linux", "Networking", "DevOps"],
+    traits: ["Tekun", "Analitis", "Inovatif", "Problem Solver"],
+    companions: ["Software Engineer", "Cybersecurity Analyst", "Data Engineer"],
+  },
+  {
+    slug: "cybersecurity-analyst",
+    name: "Cybersecurity Analyst",
+    img: imgCyber,
+    description:
+      "Cybersecurity Analyst melindungi sistem dan jaringan komputer dari ancaman peretas serta menjaga kerahasiaan data perusahaan.",
+    skills: ["Network Security", "Risk Management", "Ethical Hacking", "Cryptography"],
+    traits: ["Waspada", "Teliti", "Analitis", "Integritas Tinggi"],
+    companions: ["Cloud Engineer", "Software Engineer", "IT Manager"],
+  },
+  {
+    slug: "project-manager",
+    name: "Project Manager",
+    img: imgPm,
+    description:
+      "Project Manager memimpin tim untuk merencanakan, mengeksekusi, dan menyelesaikan proyek teknologi tepat waktu dan sesuai anggaran.",
+    skills: ["Leadership", "Agile/Scrum", "Risk Management", "Communication"],
+    traits: ["Terorganisir", "Pemimpin", "Komunikatif", "Solutif"],
+    companions: ["Software Engineer", "Business Analyst", "UI/UX Designer"],
+  },
 ];
