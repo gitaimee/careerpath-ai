@@ -33,7 +33,7 @@ export default function Register() {
       // 2. We use a Supabase trigger to auto-create the profile. 
       // Assuming the trigger handles creating row in "profiles".
       
-      alert("Registrasi berhasil! Silakan login.");
+      alert("Registrasi berhasil! Silakan periksa kotak masuk (inbox) atau folder spam pada email Anda untuk mengonfirmasi pendaftaran sebelum melakukan login.");
       navigate("/login");
     } catch (err) {
       setError(err.message);

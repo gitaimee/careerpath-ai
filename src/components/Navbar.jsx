@@ -47,7 +47,7 @@ export default function Navbar() {
             <NavLink to="/profil" className={navClass}>
               profil
             </NavLink>
-            <button onClick={handleLogout} className="text-red-500 hover:text-red-700 font-medium">
+            <button onClick={handleLogout} className="nav-logout-btn">
               logout
             </button>
           </>
