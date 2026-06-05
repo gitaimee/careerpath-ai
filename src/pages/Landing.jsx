@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import JobCard from "../components/JobCard";
-import imgCarrie from "../assets/landing/carrie 1.png";
+import imgCarrie from "../assets/landing/carrie.png";
 import imgData from "../assets/data 1.png";
 import imgUiux from "../assets/uiux 1.png";
 import imgMl from "../assets/machine learning 1.png";
