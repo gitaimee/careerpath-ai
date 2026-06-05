@@ -16,7 +16,16 @@ export default function Profil() {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        navigate("/login");
+        // Guest User - get from local storage
+        const guestHistory = JSON.parse(localStorage.getItem('careerpath_guest_history')) || [];
+        const mappedHistory = guestHistory.map((item, idx) => ({
+            id: `guest-rec-${idx}`,
+            created_at: item.date,
+            professions: item.professions
+        })).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        
+        setHistory(mappedHistory);
+        setLoading(false);
         return;
       }
       
@@ -63,7 +72,7 @@ export default function Profil() {
     };
 
     fetchProfileData();
-  }, [navigate]);
+  }, []);
 
   if (loading) {
     return (
@@ -87,13 +96,19 @@ export default function Profil() {
           <div className="profile-info-grid">
             <div>
               <p style={{fontSize: '0.875rem', color: '#64748b'}}>Nama Lengkap</p>
-              <p style={{fontWeight: '500', color: '#1e293b'}}>{profile?.full_name || session?.user?.user_metadata?.full_name || "Pengguna"}</p>
+              <p style={{fontWeight: '500', color: '#1e293b'}}>{session ? (profile?.full_name || session?.user?.user_metadata?.full_name || "Pengguna") : "Pengguna Guest"}</p>
             </div>
             <div>
               <p style={{fontSize: '0.875rem', color: '#64748b'}}>Email</p>
-              <p style={{fontWeight: '500', color: '#1e293b'}}>{session?.user?.email}</p>
+              <p style={{fontWeight: '500', color: '#1e293b'}}>{session ? session?.user?.email : "Belum Login"}</p>
             </div>
           </div>
+          
+          {!session && (
+            <div style={{marginTop: '1.5rem', padding: '0.75rem', backgroundColor: '#eff6ff', borderRadius: '0.5rem', border: '1px solid #bfdbfe'}}>
+              <p style={{color: '#1e3a8a', fontSize: '0.875rem'}}>Kamu sedang menggunakan mode Guest. Riwayat ini hanya tersimpan di browser saat ini. <a href="/register" style={{fontWeight: 'bold', textDecoration: 'underline'}}>Daftar sekarang</a> agar riwayatmu tidak hilang!</p>
+            </div>
+          )}
         </div>
 
         <h2 className="auth-title" style={{textAlign: 'left'}}>Riwayat Rekomendasi</h2>

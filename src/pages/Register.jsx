@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 
@@ -10,6 +11,21 @@ export default function Register() {
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const syncGuestHistory = async (userId) => {
+    try {
+      const guestHistory = JSON.parse(localStorage.getItem('careerpath_guest_history'));
+      if (guestHistory && guestHistory.length > 0) {
+        await axios.post('http://localhost:3000/api/assessments/sync', {
+          user_id: userId,
+          history: guestHistory
+        });
+        localStorage.removeItem('careerpath_guest_history');
+      }
+    } catch (syncErr) {
+      console.error("Error syncing guest history:", syncErr);
+    }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -30,11 +46,15 @@ export default function Register() {
 
       if (signUpError) throw signUpError;
 
-      // 2. We use a Supabase trigger to auto-create the profile. 
-      // Assuming the trigger handles creating row in "profiles".
-      
-      alert("Registrasi berhasil! Silakan periksa kotak masuk (inbox) atau folder spam pada email Anda untuk mengonfirmasi pendaftaran sebelum melakukan login.");
-      navigate("/login");
+      // 2. If Supabase auto-confirmed (session exists), sync guest history now
+      if (data?.session?.user?.id) {
+        await syncGuestHistory(data.session.user.id);
+        navigate("/profil");
+      } else {
+        // Email confirmation required — sync will happen at login time
+        alert("Registrasi berhasil! Silakan periksa kotak masuk (inbox) atau folder spam pada email Anda untuk mengonfirmasi pendaftaran sebelum melakukan login.");
+        navigate("/login");
+      }
     } catch (err) {
       setError(err.message);
     } finally {

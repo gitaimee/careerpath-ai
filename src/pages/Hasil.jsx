@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 import { jobCards } from "../data/jobCards";
 
@@ -67,8 +68,13 @@ export default function Hasil({ result }) {
 
   const [phase, setPhase] = useState("hidden");
   const [effectsOn, setEffectsOn] = useState(false);
+  const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsGuest(!session);
+    });
+
     const revealTimer = setTimeout(() => setPhase("reveal"), 150);
     const showTimer = setTimeout(() => {
       setPhase("show");
@@ -129,6 +135,22 @@ export default function Hasil({ result }) {
             </div>
           </div>
 
+          {isGuest && (
+            <div className="cp-hasil-guest-cta">
+              <div className="cp-hasil-guest-cta-icon">🔐</div>
+              <div className="cp-hasil-guest-cta-text">
+                <p className="cp-hasil-guest-cta-title">Simpan riwayat rekomendasimu!</p>
+                <p className="cp-hasil-guest-cta-desc">
+                  Kamu sedang menggunakan mode Guest. Masuk atau daftar sekarang agar riwayat rekomendasimu tersimpan permanen dan bisa diakses kapan saja dari halaman Profil.
+                </p>
+              </div>
+              <div className="cp-hasil-guest-cta-actions">
+                <Link to="/login" className="cp-btn cp-hasil-guest-cta-login">Masuk</Link>
+                <Link to="/register" className="cp-hasil-guest-cta-register">Daftar Akun →</Link>
+              </div>
+            </div>
+          )}
+
           <Link to="/tes" className="cp-hasil-retry">
             coba lagi →
           </Link>
@@ -142,3 +164,4 @@ export default function Hasil({ result }) {
     </div>
   );
 }
+

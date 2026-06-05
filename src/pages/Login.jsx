@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 
@@ -23,6 +24,23 @@ export default function Login() {
 
       if (error) throw error;
       
+      // Sync guest history
+      try {
+        const guestHistory = JSON.parse(localStorage.getItem('careerpath_guest_history'));
+        if (guestHistory && guestHistory.length > 0) {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.user?.id) {
+            await axios.post('http://localhost:3000/api/assessments/sync', {
+              user_id: session.user.id,
+              history: guestHistory
+            });
+            localStorage.removeItem('careerpath_guest_history');
+          }
+        }
+      } catch (syncErr) {
+        console.error("Error syncing history:", syncErr);
+      }
+
       // Navigate to profile or explore
       navigate("/profil");
     } catch (err) {

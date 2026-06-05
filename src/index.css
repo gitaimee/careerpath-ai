@@ -1459,6 +1459,96 @@ body {
   }
 }
 
+/* ── Guest CTA banner on Hasil page ── */
+.cp-hasil-guest-cta {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, rgba(136, 162, 255, 0.12) 0%, rgba(227, 252, 135, 0.10) 100%);
+  border: 1.5px solid rgba(136, 162, 255, 0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  animation: cpFadeUp 0.5s ease 1.2s both;
+}
+
+.cp-hasil-guest-cta-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.cp-hasil-guest-cta-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cp-hasil-guest-cta-title {
+  font-family: "Overpass Mono", monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1a2342;
+  letter-spacing: -0.3px;
+  margin: 0 0 4px 0;
+}
+
+.cp-hasil-guest-cta-desc {
+  font-size: 13.5px;
+  color: rgba(26, 35, 66, 0.6);
+  line-height: 1.55;
+  letter-spacing: -0.15px;
+  margin: 0;
+}
+
+.cp-hasil-guest-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cp-hasil-guest-cta-login {
+  padding: 10px 28px !important;
+  font-size: 14px !important;
+  white-space: nowrap;
+}
+
+.cp-hasil-guest-cta-register {
+  font-family: "Overpass Mono", monospace;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #4a6aff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.cp-hasil-guest-cta-register:hover {
+  color: #1a2342;
+}
+
+@media (max-width: 768px) {
+  .cp-hasil-guest-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 24px;
+    gap: 12px;
+  }
+  
+  .cp-hasil-guest-cta-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .cp-hasil-guest-cta-login {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .cp-hasil-card {
     flex-direction: column-reverse;

@@ -50,22 +50,34 @@ export default function TesQuestions() {
     // Map selected object to an array of 10 integers (1-5 scale)
     const answers = [];
     for (let i = 0; i < 10; i++) {
-      // selected[i] is 0-4, we add 1 to make it 1-5
       answers.push((selected[i] || 0) + 1);
     }
     
     try {
       // Get current user session
       const { data: { session } } = await supabase.auth.getSession();
+      const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
       
       const response = await axios.post("http://localhost:3000/api/assessments", {
-        user_id: session?.user?.id || "00000000-0000-0000-0000-000000000000", 
+        user_id: userId, 
         answers: answers,
         time_commitment_hours: 20
       });
       
       const professions = response.data.data.professions;
       const topJob = professions[0];
+      
+      // Jika user belum login, simpan riwayat di localStorage
+      if (userId === "00000000-0000-0000-0000-000000000000") {
+        const historyItem = {
+          date: new Date().toISOString(),
+          answers: answers,
+          professions: professions
+        };
+        const existingHistory = JSON.parse(localStorage.getItem('careerpath_guest_history')) || [];
+        existingHistory.push(historyItem);
+        localStorage.setItem('careerpath_guest_history', JSON.stringify(existingHistory));
+      }
       
       const slugMap = {
         0: "business-analyst",
@@ -85,7 +97,6 @@ export default function TesQuestions() {
       navigate("/hasil", { state: { result: jobSlug, professionsData: professions } });
     } catch (err) {
       console.error("Error submitting assessment:", err);
-      // Fallback if backend fails
       const randomJob = jobCards[Math.floor(Math.random() * jobCards.length)];
       navigate("/hasil", { state: { result: randomJob.slug } });
     } finally {
