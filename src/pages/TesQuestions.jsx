@@ -58,7 +58,8 @@ export default function TesQuestions() {
       const { data: { session } } = await supabase.auth.getSession();
       const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
       
-      const response = await axios.post("http://localhost:3000/api/assessments", {
+      const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+      const response = await axios.post(`${API_URL}/api/assessments`, {
         user_id: userId, 
         answers: answers,
         time_commitment_hours: 20

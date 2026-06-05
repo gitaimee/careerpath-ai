@@ -43,7 +43,8 @@ export default function Profil() {
         setProfile(profileData);
 
         // Get recommendations history from backend API
-        const response = await axios.get(`http://localhost:3000/api/profiles/${session.user.id}/recommendations`);
+        const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+        const response = await axios.get(`${API_URL}/api/profiles/${session.user.id}/recommendations`);
         if (response.data.status === "success") {
           // Group by rec_id since the API returns flat rows joining recommendations with recommended_professions
           const grouped = response.data.data.reduce((acc, row) => {

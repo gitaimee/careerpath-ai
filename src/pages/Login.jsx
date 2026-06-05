@@ -30,7 +30,8 @@ export default function Login() {
         if (guestHistory && guestHistory.length > 0) {
           const { data: { session } } = await supabase.auth.getSession();
           if (session?.user?.id) {
-            await axios.post('http://localhost:3000/api/assessments/sync', {
+            const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+            await axios.post(`${API_URL}/api/assessments/sync`, {
               user_id: session.user.id,
               history: guestHistory
             });

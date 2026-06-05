@@ -16,7 +16,8 @@ export default function Register() {
     try {
       const guestHistory = JSON.parse(localStorage.getItem('careerpath_guest_history'));
       if (guestHistory && guestHistory.length > 0) {
-        await axios.post('http://localhost:3000/api/assessments/sync', {
+        const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+        await axios.post(`${API_URL}/api/assessments/sync`, {
           user_id: userId,
           history: guestHistory
         });
